@@ -1,6 +1,6 @@
 package com.lc.spring.web.controller;
 
-import com.lc.spring.web.entity.User;
+import com.lc.spring.zzz.entity.User;
 import com.lc.spring.web.service.HelloService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

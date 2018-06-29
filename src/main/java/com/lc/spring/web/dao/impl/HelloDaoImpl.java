@@ -1,7 +1,7 @@
 package com.lc.spring.web.dao.impl;
 
 import com.lc.spring.web.dao.HelloDao;
-import com.lc.spring.web.entity.User;
+import com.lc.spring.zzz.entity.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 

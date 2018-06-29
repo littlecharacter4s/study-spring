@@ -1,4 +1,4 @@
-package com.lc.spring.web.entity;
+package com.lc.spring.zzz.entity;
 
 import java.util.Date;
 
