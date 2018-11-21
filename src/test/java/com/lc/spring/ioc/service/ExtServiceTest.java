@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.lc.spring.zzz.util.SpringUtil;
 import org.junit.Test;
 
-public class OrderServiceTest {
+public class ExtServiceTest {
     @Test
     public void testGetOrder() throws Exception {
         OrderService service = SpringUtil.getBean(OrderService.class);
