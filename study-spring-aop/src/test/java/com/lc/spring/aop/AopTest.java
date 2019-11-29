@@ -24,6 +24,7 @@ public class AopTest {
         accountService.handleBonusImport(1234567890L, 27L);
         System.out.println("---------------------------------");
         accountService.handleOrderIncome(); //aop的原理是动态代理，这里没有用到代理类，而是用this，所以监控不到
+        applicationContext.close();
     }
 
 }
