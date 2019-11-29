@@ -16,6 +16,7 @@ public class IocTest {
     public void testIoc() {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(IocConfig.class);
         String[] definitionBeans = applicationContext.getBeanDefinitionNames();
+        System.out.println("-------------------------------------------------------------------------------");
         Arrays.stream(definitionBeans).forEach(System.out::println);
         System.out.println("--------------");
         UserServiceImpl userService = (UserServiceImpl) applicationContext.getBean("userService");
