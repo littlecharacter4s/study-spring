@@ -13,17 +13,34 @@
 
 	<!-- 扫描注解包 -> RequestMappingHandlerMapping -->
 	<!-- <context:component-scan base-package="com.lc.spring" /> -->
-	<context:component-scan base-package="com.lc.spring" use-default-filters="false">
+	<context:component-scan base-package="com.lc.spring.mvc" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
 	</context:component-scan>
 
-	<!-- 静态资源配置 -> SimpleUrlHandlerMapping -->
+	<!-- 配置静态资源处理器 -> SimpleUrlHandlerMapping -->
 	<mvc:default-servlet-handler/>
 
+    <!-- 配置freemarker -->
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/views/" />
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">10</prop>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="number_format">0.##########</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="classic_compatible">true</prop>
+                <prop key="template_exception_handler">ignore</prop>
+            </props>
+        </property>
+    </bean>
+
     <!-- 配置视图解析器 -> BeanNameUrlHandlerMapping -->
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/views/" />
-        <property name="suffix" value=".jsp" />
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="suffix" value=".html" />
+        <property name="contentType" value="text/html;charset=UTF-8"></property>
     </bean>
 </beans>

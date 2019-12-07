@@ -1,7 +1,7 @@
-package com.lc.spring.web.controller;
+package com.lc.spring.mvc.controller;
 
-import com.lc.spring.zzz.entity.User;
-import com.lc.spring.web.service.HelloService;
+
+import com.lc.spring.mvc.service.HelloService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,8 +17,8 @@ public class HelloController {
 	public ModelAndView hello() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("hello");
-        User user = helloService.hello();
-        mv.addObject("user", user);
+        String hello = helloService.hello();
+        mv.addObject("content", hello);
         return mv;
 	}
 }
