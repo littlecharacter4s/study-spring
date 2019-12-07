@@ -7,7 +7,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -18,8 +17,7 @@ import java.io.IOException;
 
 @Configuration
 @ComponentScan("com.lc.spring.tx")
-@PropertySource("classpath:conf/application.properties")
-@MapperScan(basePackages={"com.lc.spring.tx.mapper"}, sqlSessionFactoryRef="sqlSessionFactory")
+@MapperScan(basePackages={"com.lc.spring.tx.mapper"})
 @EnableTransactionManagement
 public class TxConfig {
     @Bean
