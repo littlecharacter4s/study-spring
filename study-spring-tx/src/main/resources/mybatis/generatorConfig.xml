@@ -27,7 +27,7 @@
         </javaModelGenerator>
 
         <!--对应的xml mapper文件 -->
-        <sqlMapGenerator targetPackage="com.lc.spring.tx.mapper" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="mybatis/mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
