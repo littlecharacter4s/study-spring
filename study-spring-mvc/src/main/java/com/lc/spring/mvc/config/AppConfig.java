@@ -1,15 +1,14 @@
 package com.lc.spring.mvc.config;
 
+import com.lc.spring.mvc.interceptor.GlobalInterceptor;
+import com.lc.spring.mvc.interceptor.SpecialInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import java.io.IOException;
 
@@ -19,20 +18,20 @@ import java.io.IOException;
         includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})},
         useDefaultFilters = false
 )
-public class MvcConfig implements WebMvcConfigurer {
+public class AppConfig implements WebMvcConfigurer {
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
-        registry.freeMarker();
+        // registry.jsp("/views/", ".html");
+        registry.freeMarker().prefix("/views/").suffix(".html").cache(false);;
     }
 
-
-        @Bean
+    @Bean
     public FreeMarkerConfigurer freeMarkerConfigurer() throws IOException {
         // Configure FreeMarker...
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
 
-        configurer.setTemplateLoaderPath("/templates/");
+        // configurer.setTemplateLoaderPath("/views/");
         // Properties properties = new Properties();
         // properties.setProperty("template_update_delay", "0");
         // properties.setProperty("default_encoding", "UTF-8");
@@ -44,13 +43,25 @@ public class MvcConfig implements WebMvcConfigurer {
 
         return configurer;
     }
+//
+//     @Bean
+//     public FreeMarkerViewResolver freeMarkerViewResolver() {
+//         FreeMarkerViewResolver viewResolver = new FreeMarkerViewResolver();
+//         viewResolver.setSuffix(".html");
+//         viewResolver.setContentType("text/html;charset=UTF-8");
+//         return viewResolver;
+//     }
 
-    @Bean
-    public FreeMarkerViewResolver freeMarkerViewResolver() {
-        FreeMarkerViewResolver viewResolver = new FreeMarkerViewResolver();
-        viewResolver.setSuffix(".html");
-        viewResolver.setContentType("text/html;charset=UTF-8");
-        return viewResolver;
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new GlobalInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new SpecialInterceptor()).addPathPatterns("/springmvc/**").excludePathPatterns("/springmvc/test/**");
+    }
+
+    //静态资源访问
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
     }
 }
 

@@ -16,10 +16,28 @@ public class HelloController {
 	@RequestMapping("/hello")
 	public ModelAndView hello() {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("hello.html");
+        mv.setViewName("hello");
         String hello = helloService.hello();
         mv.addObject("content", hello);
         System.out.println("HelloController：" + hello);
         return mv;
 	}
+
+    @RequestMapping("/springmvc/hello")
+    public ModelAndView helloSpringmvc() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("hello");
+        String hello = helloService.hello();
+        mv.addObject("content", hello + " SpringMVC");
+        return mv;
+    }
+
+    @RequestMapping("/springmvc/test/hello")
+    public ModelAndView helloSpringmvcTest() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("hello");
+        String hello = helloService.hello();
+        mv.addObject("content", hello + " SpringMVCTest");
+        return mv;
+    }
 }

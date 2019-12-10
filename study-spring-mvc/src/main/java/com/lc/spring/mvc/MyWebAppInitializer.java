@@ -1,7 +1,7 @@
 package com.lc.spring.mvc;
 
-import com.lc.spring.mvc.config.IocConfig;
-import com.lc.spring.mvc.config.MvcConfig;
+import com.lc.spring.mvc.config.RootConfig;
+import com.lc.spring.mvc.config.AppConfig;
 import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -9,13 +9,13 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
     @Nullable
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{IocConfig.class};
+        return new Class[]{RootConfig.class};
     }
 
     @Nullable
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{MvcConfig.class};
+        return new Class[]{AppConfig.class};
     }
 
     @Nullable

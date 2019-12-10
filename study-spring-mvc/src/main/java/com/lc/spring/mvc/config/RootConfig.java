@@ -9,6 +9,6 @@ import org.springframework.stereotype.Controller;
 @ComponentScan(value = "com.lc.spring.mvc",
         excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Controller.class})}
 )
-public class IocConfig {
+public class RootConfig {
 
 }
