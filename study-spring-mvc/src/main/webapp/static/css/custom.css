@@ -1,9 +1,8 @@
 /*自定义的css样式*/
 
-/* body { */
-/* 	background-image: url(../image/default.jpg); */
-/* 	background-position: center; */
-/* } */
+ body {
+     background-color: #f5f5f5;
+ }
 
 #bg {
 	width: 100%;
