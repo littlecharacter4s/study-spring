@@ -126,6 +126,7 @@ Spring Transaction，声明式事务
     - MVC Config配置，等价于spring-mvc.xml配置  
     https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework-reference/web.html#mvc-config  
     注：官网的配置整合freemarker有问题，以此例中AppConfig.class为准
+    - 赠品：登录、登出、记住登录状态
 2. SpringMVC原理
     1. web容器在启动的时候，会扫描每个jar包下的META-INF/services/javax.servlet.ServletContainerInitializer文件
     2. 加载这个文件指定的类：SpringServletContainerInitializer
