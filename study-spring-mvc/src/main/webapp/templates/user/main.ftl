@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Hello World</title>
+    <title>个人主页</title>
 </head>
 <body>
-<h3>${content}</h3>
+    ${userInfo}
 </body>
 </html>

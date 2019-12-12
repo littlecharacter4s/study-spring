@@ -1,5 +1,6 @@
 package com.lc.spring.mvc.config;
 
+import com.lc.spring.mvc.interceptor.AuthenticationInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +28,7 @@ public class AppConfig implements WebMvcConfigurer {
         // Configure FreeMarker...
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
 
-        configurer.setTemplateLoaderPath("/views/");
+        configurer.setTemplateLoaderPath("/templates/");
         Properties properties = new Properties();
         properties.setProperty("template_update_delay", "0");
         properties.setProperty("default_encoding", "UTF-8");
@@ -46,15 +47,16 @@ public class AppConfig implements WebMvcConfigurer {
     public FreeMarkerViewResolver freeMarkerViewResolver() {
         // Configure ViewResolver...
         FreeMarkerViewResolver viewResolver = new FreeMarkerViewResolver();
-        viewResolver.setSuffix(".html");
+        viewResolver.setSuffix(".ftl");
         viewResolver.setContentType("text/html;charset=UTF-8");
         return viewResolver;
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        // registry.addInterceptor(new GlobalInterceptor()).addPathPatterns("/**");
-        // registry.addInterceptor(new SpecialInterceptor()).addPathPatterns("/springmvc/**").excludePathPatterns("/springmvc/test/**");
+        registry.addInterceptor(new AuthenticationInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/","/login");
     }
 
     //静态资源访问
