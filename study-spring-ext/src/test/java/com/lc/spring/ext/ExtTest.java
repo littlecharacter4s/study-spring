@@ -15,7 +15,7 @@ public class ExtTest {
         Arrays.stream(definitionBeans).forEach(System.out::println);
         System.out.println("-------------------------------------------------------------------------");
         //发布事件；
-        applicationContext.publishEvent(new ApplicationEvent(new String("我发布的事件")) {
+        applicationContext.publishEvent(new ApplicationEvent("我发布的事件") {
         });
         applicationContext.close();
     }
