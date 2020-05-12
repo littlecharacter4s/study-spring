@@ -10,6 +10,10 @@ import java.util.Arrays;
 @Component
 public class CustomBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
+    public CustomBeanFactoryPostProcessor() {
+        System.out.println("CustomBeanFactoryPostProcessor：实例化...");
+    }
+
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         int count = beanFactory.getBeanDefinitionCount();
