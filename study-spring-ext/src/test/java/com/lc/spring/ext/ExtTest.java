@@ -1,5 +1,8 @@
 package com.lc.spring.ext;
 
+import com.lc.spring.ext.annotation.InjectBO;
+import com.lc.spring.ext.service.ExtendService;
+import com.lc.spring.ext.service.InjectService;
 import org.junit.Test;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,9 +17,11 @@ public class ExtTest {
         System.out.println("-------------------------------------------------------------------------------");
         Arrays.stream(definitionBeans).forEach(System.out::println);
         System.out.println("-------------------------------------------------------------------------");
-        //发布事件；
+        // 发布事件；
         applicationContext.publishEvent(new ApplicationEvent("我发布的事件") {
         });
-        applicationContext.close();
+        System.out.println(((ExtendService)applicationContext.getBean("extendService")).getInjectBO());
+        System.out.println(((InjectService)applicationContext.getBean("injectService")).getInjectBO());
+        // applicationContext.close();
     }
 }
