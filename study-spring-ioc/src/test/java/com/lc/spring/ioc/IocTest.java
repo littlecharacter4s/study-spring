@@ -7,13 +7,18 @@ import com.lc.spring.ioc.config.CommonConfig;
 import com.lc.spring.ioc.service.SystemService;
 import com.lc.spring.ioc.service.TradeService;
 import org.junit.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
 
 public class IocTest {
     @Test
     public void testIoc() {
+        // ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring.xml");
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(IocConfig.class);
         String[] definitionBeans = applicationContext.getBeanDefinitionNames();
         System.out.println("-------------------------------------------------------------------------------");
