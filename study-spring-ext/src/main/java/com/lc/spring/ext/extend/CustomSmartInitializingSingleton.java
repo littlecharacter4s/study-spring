@@ -17,7 +17,9 @@ public class CustomSmartInitializingSingleton implements SmartInitializingSingle
 
     @Override
     public void afterSingletonsInstantiated() {
-        // 在所有的 bean 都初始化好之后（也就是 bean 都在 singletonObjects 中了）调用，@EventListener 使用了这种方式
+        // 在所有的 bean 都初始化好之后（也就是 bean 都在 singletonObjects 中了）调用，
+        // @EventListener 注解的解析处理器使用了 SmartInitializingSingleton
+        // public class EventListenerMethodProcessor implements SmartInitializingSingleton
         System.out.println("CustomSmartInitializingSingleton：afterSingletonsInstantiated...");
     }
 }
