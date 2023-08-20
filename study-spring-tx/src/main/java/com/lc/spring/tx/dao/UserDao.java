@@ -1,9 +1,9 @@
 package com.lc.spring.tx.dao;
 
-import com.lc.spring.tx.entity.User;
+import com.lc.spring.tx.entity.LabUser;
 
 public interface UserDao {
-    User getUserInfo(long userId);
+    LabUser getUserInfo(long userId);
 
-    int addUser(User user);
+    int addUser(LabUser user);
 }
