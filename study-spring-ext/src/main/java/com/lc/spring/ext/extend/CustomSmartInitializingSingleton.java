@@ -1,5 +1,6 @@
 package com.lc.spring.ext.extend;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.context.ApplicationContext;
@@ -21,5 +22,6 @@ public class CustomSmartInitializingSingleton implements SmartInitializingSingle
         // @EventListener 注解的解析处理器使用了 SmartInitializingSingleton
         // public class EventListenerMethodProcessor implements SmartInitializingSingleton
         System.out.println("CustomSmartInitializingSingleton：afterSingletonsInstantiated...");
+        System.out.println("获取spring工厂的环境变量：" + JSON.toJSONString(applicationContext.getEnvironment()));
     }
 }
